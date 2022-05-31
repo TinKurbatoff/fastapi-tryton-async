@@ -44,6 +44,10 @@ async def iversta_post(request: Request):  # (request: Request) — required!
 There are three configuration options available:
 
 TRYTON_DATABASE: the Tryton’s database to connect.
+
 TRYTON_USER: the Tryton user id to use, by default 0 (aka root).
+
 TRYTON_CONFIG: the optional path to the Tryton’s configuration.
+
 TRYTON_CONNECTION: full path (uri) to the database 
+

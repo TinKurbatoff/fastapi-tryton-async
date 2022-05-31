@@ -10,12 +10,16 @@ pip3 install git+https://github.com/TinKurbatoff/fastapi-tryton-async.git
 
 Usage:
 ```
-from fastapi import 
-from fastapi-tryton-async
+from fastapi import FastAPI
+from fastapi import Request
+from fastapi_tryton_async import Tryton
+from fastapi_tryton_async import options
 
 options.config['TRYTON_DATABASE'] = "my_database"  # What exact database name
 options.config['TRYTON_CONFIG'] = "/etc/tryton.conf"
 options.config['TRYTON_CONNECTION'] = "postgresql://user:my_secret_password@localhost:5432"
+
+app = FastAPI()
 
 try:
     tryton = Tryton(options, configure_jinja=True)
@@ -24,11 +28,15 @@ except Exception as e:
     exit()
 User = tryton.pool.get('res.user')  # Important class type - User
 
-@app.post(f"/{config.API_VER}/")  
+# ——— API endpoints
+@app.post(f"/hello/")  
 @tryton.transaction(readonly=False)
 async def iversta_post(request: Request):
     user, = User.search([('login', '=', 'admin')])
     return '%s, Hello World!' % user.name
+
+...
+
 ```
 *NOTE*: request (fastapi Request class) always required for the decorated function.
 

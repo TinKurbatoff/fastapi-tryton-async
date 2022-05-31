@@ -251,8 +251,8 @@ class Tryton(object):
                     task_id = await transaction.tasks.pop()
                     run_task(tryton.pool, task_id)
 
-                print(f"Total request time ⏱  {time.time() - start_time:0.4f}s")    
-                print("⭐️✨⭐️ That's the end, folks! ✨⭐️✨")
+                logger.info(f"Total request time ⏱  {time.time() - start_time:0.4f}s")    
+                logger.info("⭐️✨⭐️ That's the end, folks! ✨⭐️✨")
                 return result
             return wrapper
         return decorator

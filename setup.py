@@ -5,5 +5,5 @@ setuptools.setup(
     version='0.1.0',
     author='Constantine K',
     description='FastAPI connection module for Tryton ERP',
-    packages=['fastapi_tryton', ],
+    packages=['fastapi_tryton_async', ],
     )

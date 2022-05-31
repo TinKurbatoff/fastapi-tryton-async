@@ -22,7 +22,7 @@ from pydantic import BaseSettings
 from fastapi.responses import JSONResponse
 
 from trytond import __version__ as trytond_version
-from trytond.config import config  # Used to import and update within a third-party apps
+from trytond.config import config  
 from trytond.exceptions import UserError, UserWarning, ConcurrencyException
 from trytond.exceptions import RateLimitException  # Used to import and check within a third-party apps
 
@@ -68,7 +68,7 @@ class Settings(BaseSettings):
     url_map = {'converters': {}}
 
 
-options = Settings()
+options = Settings()  # Used to import and update within a third-party apps
 
 
 class Tryton(object):

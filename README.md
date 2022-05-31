@@ -31,14 +31,14 @@ User = tryton.pool.get('res.user')  # Important class type - User
 # ——— API endpoints
 @app.post(f"/hello/")  
 @tryton.transaction(readonly=False)
-async def iversta_post(request: Request):
+async def iversta_post(request: Request):  # (request: Request) — required!
     user, = User.search([('login', '=', 'admin')])
     return '%s, Hello World!' % user.name
 
 ...
 
 ```
-*NOTE*: request (fastapi Request class) always required for the decorated function.
+*NOTE*: request (fastapi Request class) always required for the decorated function parameters.
 
 
 There are three configuration options available:
